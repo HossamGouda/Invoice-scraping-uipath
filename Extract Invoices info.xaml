@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>818.4,4702.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>818.4,4731.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Extract_Invoices_info_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
@@ -128,7 +128,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Extract_Invoices_info" sap:VirtualizedContainerService.HintSize="745.6,4637.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Extract_Invoices_info" sap:VirtualizedContainerService.HintSize="745.6,4666.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="invoices" />
       <Variable x:TypeArguments="sd:DataTable" Name="ExtractedDT" />
@@ -162,13 +162,13 @@
         <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles( in_source)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Description: Automation to extact Order Information from the downloaded Pdf invoices and save all the extracted data in an Excel spreadsheet named &quot;CustomerName_InvoiceNo.xlsx&quot;&#xA;&#xA;Pre-Condition: Pdf Invoices downloaded&#xA;&#xA;Post-Action: All Order Information extracted and saved in an Excel spreadsheet named &quot;CustomerName_InvoiceNo.xlsx&quot;" DisplayName="Loop Through All The PDF Invoices in the Invoices Folder" sap:VirtualizedContainerService.HintSize="683.2,4282.4" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[invoices]">
+    <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Description: Automation to extact Order Information from the downloaded Pdf invoices and save all the extracted data in an Excel spreadsheet named &quot;CustomerName_InvoiceNo.xlsx&quot;&#xA;&#xA;Pre-Condition: Pdf Invoices downloaded&#xA;&#xA;Post-Action: All Order Information extracted and saved in an Excel spreadsheet named &quot;CustomerName_InvoiceNo.xlsx&quot;" DisplayName="Loop Through All The PDF Invoices in the Invoices Folder" sap:VirtualizedContainerService.HintSize="683.2,4311.2" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[invoices]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="invoice" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="649.6,3972.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="649.6,4001.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -199,13 +199,13 @@
               </Assign.Value>
             </Assign>
             <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="[invoice.ToString]" sap:VirtualizedContainerService.HintSize="606.4,88" sap2010:WorkflowViewState.IdRef="StartProcess_2" />
-            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'acrobat.exe JaneDoe_010...'" sap:VirtualizedContainerService.HintSize="606.4,3390.4" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="dbc021197518d1aa9e71f0b2bc9c0087" Selector="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Pro DC (64-bit)' /&gt;">
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'acrobat.exe JaneDoe_010...'" sap:VirtualizedContainerService.HintSize="606.4,3419.2" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="dbc021197518d1aa9e71f0b2bc9c0087" Selector="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Pro DC (64-bit)' /&gt;">
               <ui:WindowScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Performing Process in the attache window for the PDF file" sap:VirtualizedContainerService.HintSize="572.8,3243.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <Sequence DisplayName="Performing Process in the attache window for the PDF file" sap:VirtualizedContainerService.HintSize="572.8,3272" sap2010:WorkflowViewState.IdRef="Sequence_13">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -264,7 +264,7 @@
                         <InArgument x:TypeArguments="x:Int32">2</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <If Condition="[pageCounter=1]" sap:VirtualizedContainerService.HintSize="510.4,1860.8" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If Condition="[pageCounter=1]" sap:VirtualizedContainerService.HintSize="510.4,1889.6" sap2010:WorkflowViewState.IdRef="If_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -272,7 +272,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,474.4" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,596" sap2010:WorkflowViewState.IdRef="Sequence_23">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="sd:DataTable" Name="DT" />
                           </Sequence.Variables>
@@ -281,6 +281,14 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="sd:DataTable">[ExtractedDT]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="sd:DataTable">[new Datatable]</InArgument>
+                            </Assign.Value>
+                          </Assign>
                           <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="False" DataTable="[ExtractedDT]" DisplayName="Extract Structured Data from inv table " ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest' /&gt;" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="ExtractData_12" MaxNumberOfResults="100" SimulateClick="False">
                             <ui:ExtractData.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="59c74fe8-b5ed-450e-a63d-65e868676188" InformativeScreenshot="0a5c99852634f2eb097e86adcc9268e2" Selector="[string.Format(&quot;&lt;wnd aaname='Document Pane' cls='AVL_AVView' title='AVScrolledPageView' /&gt;&lt;wnd cls='AVL_AVView' title='AVPageView' /&gt;&lt;ctrl idx='{0}' role='table' /&gt;&quot;, idx)]">
@@ -294,7 +302,7 @@
                             </ui:ExtractData.Target>
                           </ui:ExtractData>
                           <ui:WriteRange AddHeaders="True" DataTable="[ExtractedDT]" DisplayName="Write Extracted data in Cell A3" sap:VirtualizedContainerService.HintSize="433.6,116" sap2010:WorkflowViewState.IdRef="WriteRange_6" SheetName="Sheet1" StartingCell="A3" WorkbookPath="[&quot;Order Information\&quot;+CustomerName+&quot;_&quot;+InvoiceNumber+&quot;.xlsx&quot;]" />
-                          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_35">
                             <Assign.To>
                               <OutArgument x:TypeArguments="sd:DataTable">[ExtractedDT]</OutArgument>
                             </Assign.To>
@@ -305,7 +313,7 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,1235.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,1142.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -369,23 +377,6 @@
                               <InArgument x:TypeArguments="sd:DataTable">[new Datatable]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                            <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,104.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Sequence>
-                            </ui:CommentOut.Body>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:CommentOut>
                         </Sequence>
                       </If.Else>
                     </If>
