@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>850.4,1120.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>763.2,1389.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetEmails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -102,37 +102,45 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetEmails" sap:VirtualizedContainerService.HintSize="586.4,1560.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description:  This workflow is for opening Outlook, searching for unread emails with a &quot;Techno Computers&quot; subject, and processing the emails by downloading the pdf Attachments in the invoices folder in the project directory.&#xA;&#xA;Pre-Conditions: internet concection &amp; mail box with 4 unread email with the target subject line.&#xA;&#xA;&#xA;Post-Actions: Emails marked as read and attachments downloaded in the invoices folder." DisplayName="Saving emails Attachmentsin the invoices folder" sap:VirtualizedContainerService.HintSize="584,1324.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mails" />
-      <Variable x:TypeArguments="x:String" Name="path">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C:\Users\&quot;+Environment.UserName+&quot;\OneDrive\Documents\UiPath\Invoice Scraping Project\Invoices&quot;" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="[&quot;C:\Users\&quot;+Environment.UserName+&quot;\OneDrive\Documents\UiPath\Invoice Scraping Project\Invoices&quot;]" Name="path" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetOutlookMailMessages Account="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages" Filter="[Subject] = 'Techno Computers'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="524,24.8" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[mails]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="5" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Mails are Ready&quot;]" />
-    <ui:ForEach x:TypeArguments="snm:MailMessage" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="524,1129.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[mails]">
+    <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="hossamgouda90@gmail.com" DisplayName="Get Outlook Mail Messages with subject line &quot;Techno Computers&quot;" Filter="[Subject] = 'Techno Computers'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="521.6,24.8" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[mails]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="5" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="521.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Mails are Ready&quot;]" />
+    <ui:ForEach x:TypeArguments="snm:MailMessage" sap2010:Annotation.AnnotationText="looping through all the target mails and saving attachments then mark the mail as read" DisplayName="Looping through each mail and save the invoices." sap:VirtualizedContainerService.HintSize="521.6,709.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[mails]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="mail" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="490.4,928" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="488,476.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="447.2,838.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="444.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[mail.Subject]" />
+            <TryCatch sap2010:Annotation.AnnotationText="Try cheking if mail has atatchements if error catch and throw business rule exception" DisplayName="Try cheking if mail has atatchements if error catch and throw business rule exception" sap:VirtualizedContainerService.HintSize="444.8,254.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <If Condition="[mail.Attachments.Any]" sap:VirtualizedContainerService.HintSize="410.4,607.2" sap2010:WorkflowViewState.IdRef="If_1">
+                <If sap2010:Annotation.AnnotationText="checks if the email has Atachments :&#xA;-If true, downloads the invoices to a folder named 'Invoices' in the project directory&#xA;- Else, throw a Business Rule Exception 'Attachments not found'" Condition="[mail.Attachments.Any]" DisplayName="If  the mail with target subject lin has attachment save it " sap:VirtualizedContainerService.HintSize="334.4,182.4" sap2010:WorkflowViewState.IdRef="If_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
                     <Sequence sap:VirtualizedContainerService.HintSize="376.8,310.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
                       <sap:WorkflowViewStateService.ViewState>
@@ -140,24 +148,24 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[&quot;Invoices\&quot;.ToString]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mail]" OverwriteExisting="False" />
+                      <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save PDF Attachments" ExcludeInlineAttachments="False" FolderPath="[&quot;Invoices\&quot;.ToString]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mail]" OverwriteExisting="False" />
                       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[mail.Subject.ToString]" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376.8,145.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence sap:VirtualizedContainerService.HintSize="377.6,180" sap2010:WorkflowViewState.IdRef="Sequence_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:Comment sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="&quot;Do Nothing &quot;" />
+                      <Throw DisplayName="Throw - Business Exception Mail without Attachemnts" Exception="[new BusinessRuleException(&quot;mails have not Attachments&quot;)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
                     </Sequence>
                   </If.Else>
                 </If>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="413.6,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="411.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -171,6 +179,20 @@
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Error happend &quot;+exception.Source]" />
                   </ActivityAction>
                 </Catch>
+                <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="411.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+                    </ActivityAction.Argument>
+                    <Throw Exception="[new BusinessRuleException(&quot;mails have not Attachments&quot;)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                  </ActivityAction>
+                </Catch>
               </TryCatch.Catches>
             </TryCatch>
           </Sequence>
@@ -179,14 +201,24 @@
       <ui:ForEach.CurrentIndex>
         <OutArgument x:TypeArguments="x:Int32" />
       </ui:ForEach.CurrentIndex>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <Assign sap:VirtualizedContainerService.HintSize="524,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="This assigns path to an argument for the PDF folder containing the downloaded invoices." DisplayName="Assign files path to Argument " sap:VirtualizedContainerService.HintSize="521.6,125.6" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_source]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\Invoices\"]</InArgument>
       </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </Assign>
   </Sequence>
 </Activity>
